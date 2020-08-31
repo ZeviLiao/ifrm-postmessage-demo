@@ -1,0 +1,20 @@
+<!-- iframePage -->
+<body style="border: 5px solid #333">
+  <h1>this is iframePage</h1>
+
+  <button onclick="phello()">to main</button>
+
+  <script>
+    // iframePage.html
+    //回调函数
+    function receiveMessageFromIndex(event) {
+      console.log("receiveMessageFromIndex", event);
+    }
+    //监听message事件
+    window.addEventListener("message", receiveMessageFromIndex, false);
+
+    function phello() {
+      parent.postMessage({ msg: "MessageFromIframePage" }, "*");
+    }
+  </script>
+</body>
